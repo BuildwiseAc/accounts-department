@@ -3,217 +3,236 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>Buildwise Accounting</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<title>Your Accounts Department</title>
+<meta property="og:title" content="Your Accounts Department — Buildwise Accounting">
+<meta property="og:description" content="CIS · VAT · MTD · Self Assessment. Your dedicated accounts department for construction.">
+<meta property="og:type" content="website">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-:root{
-  --gold:#C9A84C;
-  --gold2:#b8952f;
-  --gold-glow:rgba(201,168,76,0.15);
-  --gold-line:rgba(201,168,76,0.32);
-  --bg:#080808;
-  --bg2:#101010;
-  --bg3:#181818;
-  --bg4:#202020;
-  --white:#f5f5f0;
-  --dim:rgba(245,245,240,0.52);
-  --dim2:rgba(245,245,240,0.26);
-  --border:rgba(255,255,255,0.07);
-  --border2:rgba(255,255,255,0.12);
-}
-
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-html,body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--white);min-height:100vh;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+html,body{font-family:'Inter',sans-serif;background:#111;color:#fff;min-height:100vh;overflow-x:hidden;-webkit-font-smoothing:antialiased}
 
 .screen{display:none;min-height:100vh;flex-direction:column}
-.screen.active{display:flex;animation:rise .4s cubic-bezier(.22,1,.36,1) both}
-@keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+.screen.active{display:flex;animation:fadeUp .35s ease both}
+@keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
 
-/* ── HERO ── */
+/* ── SCREEN 1 ── */
+#s1{background:#111}
+
+/* Big sticking-out hero */
 .hero{
-  padding:44px 22px 32px;
-  background:linear-gradient(170deg,#111 0%,var(--bg) 100%);
-  position:relative;overflow:hidden;
+  background:#111;
+  padding:44px 22px 0;
+  position:relative;
 }
-.hero::before{
-  content:'';position:absolute;top:-70px;right:-70px;
-  width:240px;height:240px;
-  background:radial-gradient(circle,rgba(201,168,76,0.07) 0%,transparent 65%);
-  pointer-events:none;
+.hero-label{
+  font-family:'Inter',sans-serif;
+  font-size:11px;
+  font-weight:600;
+  letter-spacing:3px;
+  text-transform:uppercase;
+  color:#C9A84C;
+  margin-bottom:14px;
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+.hero-label::before{content:'';width:20px;height:1px;background:#C9A84C}
+
+.hero-headline{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:72px;
+  line-height:0.92;
+  letter-spacing:1px;
+  color:#fff;
+  margin-bottom:0;
+  position:relative;
+  z-index:2;
+}
+.hero-headline .gold{color:#C9A84C}
+
+/* dark card that slides under the headline */
+.card{
+  background:#1a1a1a;
+  border-radius:20px 20px 0 0;
+  margin-top:-20px;
+  padding:32px 22px 28px;
+  position:relative;
+  z-index:1;
 }
 
-.overline{
-  font-size:10px;font-weight:600;letter-spacing:3px;
-  text-transform:uppercase;color:var(--gold);
-  margin-bottom:14px;display:flex;align-items:center;gap:10px;
+.hero-sub{
+  font-size:13.5px;
+  line-height:1.75;
+  color:rgba(255,255,255,0.55);
+  margin-bottom:28px;
+  padding-top:10px;
 }
-.overline::before{content:'';width:22px;height:1px;background:var(--gold)}
+.hero-sub strong{color:#fff;font-weight:500}
 
-.hero-title{
-  font-family:'Playfair Display',serif;
-  font-size:33px;font-weight:700;line-height:1.13;
-  color:var(--white);margin-bottom:6px;letter-spacing:-0.4px;
-}
-.hero-title em{color:var(--gold);font-style:italic;font-weight:600}
-
-.hero-role{
-  font-size:13px;color:var(--dim);
-  margin-bottom:22px;letter-spacing:0.2px;
+/* services */
+.svc-label{
+  font-size:10px;
+  font-weight:600;
+  letter-spacing:2.5px;
+  text-transform:uppercase;
+  color:#C9A84C;
+  margin-bottom:16px;
 }
 
-.hero-statement p{
-  font-size:14px;line-height:1.8;color:var(--dim);
-}
-.hero-statement p strong{color:var(--white);font-weight:500}
-
-/* ── SERVICES ── */
-.section{padding:30px 0 0}
-
-.section-header{padding:0 22px;margin-bottom:20px}
-.section-title{
-  font-family:'Playfair Display',serif;
-  font-size:21px;font-weight:600;color:var(--white);margin-bottom:4px;
-}
-.section-desc{font-size:12.5px;color:var(--dim2);line-height:1.6}
-
-/* full-bleed list — no side padding, border top only */
-.svc-list{
-  display:flex;flex-direction:column;
-  border-top:1px solid var(--border);
-}
+.svc-list{display:flex;flex-direction:column;gap:0;border-top:1px solid rgba(255,255,255,0.07)}
 
 .svc-item{
-  padding:18px 22px;
-  display:flex;gap:14px;align-items:flex-start;
-  border-bottom:1px solid var(--border);
+  padding:16px 0;
+  display:flex;gap:13px;align-items:flex-start;
+  border-bottom:1px solid rgba(255,255,255,0.07);
 }
+.svc-icon{
+  width:34px;height:34px;
+  background:rgba(201,168,76,0.14);
+  border:1px solid rgba(201,168,76,0.3);
+  border-radius:9px;
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+  margin-top:1px;
+}
+.svc-icon svg{width:15px;height:15px;stroke:#C9A84C;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.svc-body{flex:1}
+.svc-name{font-size:14px;font-weight:600;color:#fff;margin-bottom:4px;line-height:1.2}
+.svc-desc{font-size:12px;line-height:1.68;color:rgba(255,255,255,0.5)}
+.svc-desc strong{color:rgba(255,255,255,0.8);font-weight:500}
 
-.svc-icon-wrap{
-  width:36px;height:36px;
-  background:var(--gold-glow);
-  border:1px solid var(--gold-line);
-  border-radius:10px;
-  display:flex;align-items:center;justify-content:center;
-  flex-shrink:0;margin-top:1px;
-}
-.svc-icon-wrap svg{
-  width:16px;height:16px;
-  stroke:var(--gold);fill:none;
-  stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;
-}
+/* CTA */
+.cta-wrap{padding:28px 22px 0;background:#1a1a1a}
 
-.svc-body{flex:1;display:flex;flex-direction:column;gap:5px}
-.svc-name{
-  font-size:14.5px;font-weight:600;color:var(--white);line-height:1.2;
+.cta-card{
+  background:#222;
+  border:1px solid rgba(255,255,255,0.1);
+  border-radius:14px;
+  padding:22px 20px;
+  text-align:center;
+  margin-bottom:16px;
 }
-.svc-detail{
-  font-size:12.5px;line-height:1.72;color:var(--dim);
-}
-.svc-detail strong{color:rgba(245,245,240,0.8);font-weight:500}
-
-/* ── CTA ── */
-.cta-section{padding:32px 22px 48px;display:flex;flex-direction:column;gap:14px}
-
-.cta-block{
-  background:var(--bg3);border:1px solid var(--border2);
-  border-radius:16px;padding:24px 20px;text-align:center;
-}
-.cta-kicker{
+.cta-eyebrow{
   font-size:10px;font-weight:600;letter-spacing:2.5px;
-  text-transform:uppercase;color:var(--gold);margin-bottom:10px;
+  text-transform:uppercase;color:#C9A84C;margin-bottom:10px;
 }
-.cta-heading{
-  font-family:'Playfair Display',serif;
-  font-size:20px;font-weight:600;color:var(--white);
-  line-height:1.25;margin-bottom:9px;
+.cta-headline{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:36px;
+  line-height:1;
+  color:#fff;
+  margin-bottom:10px;
+  letter-spacing:0.5px;
 }
 .cta-body{
-  font-size:13px;line-height:1.75;color:var(--dim);margin-bottom:20px;
+  font-size:13px;line-height:1.7;
+  color:rgba(255,255,255,0.5);
+  margin-bottom:20px;
 }
-.btn-gold{
-  display:block;width:100%;background:var(--gold);color:#111;
-  font-family:'Inter',sans-serif;font-size:15px;font-weight:600;
-  padding:15px 20px;border:none;border-radius:10px;cursor:pointer;
-  letter-spacing:0.3px;text-decoration:none;text-align:center;
-  transition:background .15s,transform .12s;
+.cta-btn{
+  display:block;width:100%;
+  background:#C9A84C;color:#111;
+  font-family:'Bebas Neue',sans-serif;
+  font-size:22px;letter-spacing:1px;
+  padding:16px 20px;
+  border:none;border-radius:10px;cursor:pointer;
+  transition:background .15s,transform .1s;
 }
-.btn-gold:active{background:var(--gold2);transform:scale(0.985)}
+.cta-btn:active{background:#b8952f;transform:scale(0.98)}
 
-.or-divider{
-  display:flex;align-items:center;gap:12px;padding:0 2px;
+.or-row{
+  display:flex;align-items:center;gap:12px;
+  margin-bottom:14px;
 }
-.or-divider span{font-size:11px;color:var(--dim2);letter-spacing:1px;text-transform:uppercase;white-space:nowrap}
-.or-divider::before,.or-divider::after{content:'';flex:1;height:1px;background:var(--border)}
+.or-row span{font-size:11px;color:rgba(255,255,255,0.25);letter-spacing:1px;text-transform:uppercase;white-space:nowrap}
+.or-row::before,.or-row::after{content:'';flex:1;height:1px;background:rgba(255,255,255,0.07)}
 
-.contact-email{
+.email-link{
   display:flex;align-items:center;justify-content:center;gap:10px;
-  padding:14px 18px;background:var(--bg3);border:1px solid var(--border2);
-  border-radius:12px;font-size:13.5px;font-weight:500;color:var(--gold);
-  text-decoration:none;transition:background .18s;
+  padding:14px 18px;
+  background:#222;border:1px solid rgba(255,255,255,0.1);
+  border-radius:11px;
+  font-size:13px;font-weight:500;color:#C9A84C;
+  text-decoration:none;margin-bottom:36px;
 }
-.contact-email:active{background:var(--bg4)}
-.email-icon{
-  width:30px;height:30px;background:var(--gold-glow);border:1px solid var(--gold-line);
-  border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;
-}
-.email-icon svg{width:15px;height:15px;stroke:var(--gold);fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.email-link svg{width:16px;height:16px;stroke:#C9A84C;fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
 
-/* ── FORM ── */
-#s2{background:var(--bg)}
-.form-top{padding:36px 22px 22px;border-bottom:1px solid var(--border)}
-.back{
+/* ── SCREEN 2 — FORM ── */
+#s2{background:#111}
+.form-top{padding:36px 22px 22px;border-bottom:1px solid rgba(255,255,255,0.07)}
+.back-btn{
   display:inline-flex;align-items:center;gap:7px;
-  color:var(--gold);font-size:13px;font-weight:500;
-  cursor:pointer;margin-bottom:20px;background:none;border:none;padding:0;
+  color:#C9A84C;font-size:13px;font-weight:500;
+  background:none;border:none;padding:0;cursor:pointer;margin-bottom:22px;
 }
-.back svg{width:16px;height:16px;stroke:var(--gold);fill:none;stroke-width:1.8;stroke-linecap:round}
-.form-label{font-size:10px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);margin-bottom:9px}
-.form-heading{font-family:'Playfair Display',serif;font-size:23px;font-weight:600;color:var(--white);margin-bottom:8px;line-height:1.2}
-.form-sub{font-size:13px;color:var(--dim);line-height:1.65}
+.back-btn svg{width:16px;height:16px;stroke:#C9A84C;fill:none;stroke-width:1.8;stroke-linecap:round}
+.form-ey{font-size:10px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:#C9A84C;margin-bottom:9px}
+.form-h{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:42px;line-height:1;color:#fff;margin-bottom:10px;letter-spacing:0.5px;
+}
+.form-p{font-size:13px;color:rgba(255,255,255,0.5);line-height:1.65}
 
-.form-body{padding:22px;flex:1}
+.form-body{padding:24px 22px;flex:1}
 .f{margin-bottom:14px}
-.f label{display:block;font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--dim2);margin-bottom:7px}
+.f label{display:block;font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:7px}
 .f input,.f select{
-  width:100%;background:var(--bg3);border:1px solid var(--border2);
+  width:100%;background:#1a1a1a;border:1px solid rgba(255,255,255,0.12);
   border-radius:10px;padding:13px 15px;
-  font-family:'Inter',sans-serif;font-size:15px;color:var(--white);
+  font-family:'Inter',sans-serif;font-size:15px;color:#fff;
   outline:none;-webkit-appearance:none;transition:border-color .18s;
 }
-.f input::placeholder{color:var(--dim2)}
-.f input:focus,.f select:focus{border-color:var(--gold)}
-.f select option{background:#222;color:var(--white)}
+.f input::placeholder{color:rgba(255,255,255,0.2)}
+.f input:focus,.f select:focus{border-color:#C9A84C}
+.f select option{background:#222;color:#fff}
 .f.bad input,.f.bad select{border-color:#e05555}
 .errt{display:none;font-size:11px;color:#e07070;margin-top:5px}
 .f.bad .errt{display:block}
 
 .gdpr{
   display:flex;gap:12px;align-items:flex-start;
-  background:var(--bg3);border:1px solid var(--border);
+  background:#1a1a1a;border:1px solid rgba(255,255,255,0.07);
   border-radius:10px;padding:13px 14px;margin-bottom:20px;
 }
-.gdpr input[type=checkbox]{width:18px;height:18px;flex-shrink:0;margin-top:1px;accent-color:var(--gold);cursor:pointer}
-.gdpr label{font-size:12px;color:var(--dim);line-height:1.6;cursor:pointer}
-.priv{text-align:center;font-size:11px;color:var(--dim2);margin-top:11px;padding-bottom:36px}
+.gdpr input[type=checkbox]{width:18px;height:18px;flex-shrink:0;margin-top:1px;accent-color:#C9A84C;cursor:pointer}
+.gdpr label{font-size:12px;color:rgba(255,255,255,0.45);line-height:1.6;cursor:pointer}
 
-/* ── THANKS ── */
+.submit-btn{
+  display:block;width:100%;
+  background:#C9A84C;color:#111;
+  font-family:'Bebas Neue',sans-serif;
+  font-size:22px;letter-spacing:1px;
+  padding:17px;border:none;border-radius:10px;cursor:pointer;
+  transition:background .15s,transform .1s;
+}
+.submit-btn:active{background:#b8952f;transform:scale(0.98)}
+.submit-btn:disabled{opacity:0.55}
+.priv{text-align:center;font-size:11px;color:rgba(255,255,255,0.25);margin-top:12px;padding-bottom:36px}
+
+/* ── SCREEN 3 — THANKS ── */
 #s3{
-  background:var(--bg);align-items:center;justify-content:center;
+  background:#111;align-items:center;justify-content:center;
   text-align:center;padding:52px 28px;
 }
 .tick{
-  width:72px;height:72px;border-radius:50%;background:var(--gold);
+  width:72px;height:72px;border-radius:50%;background:#C9A84C;
   display:flex;align-items:center;justify-content:center;
   margin:0 auto 26px;
 }
 .tick svg{width:34px;height:34px;stroke:#111;fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
-.ty-h{font-family:'Playfair Display',serif;font-size:28px;font-weight:600;color:var(--white);margin-bottom:12px}
-.ty-p{font-size:14px;color:var(--dim);line-height:1.8;margin-bottom:30px;max-width:290px;margin-left:auto;margin-right:auto}
-.ty-contact{background:var(--bg3);border:1px solid var(--border2);border-radius:14px;padding:20px;width:100%;max-width:320px}
-.ty-contact-label{font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:12px}
-.ty-contact a{display:block;font-size:14px;color:var(--dim);text-decoration:none;padding:4px 0}
-.ty-contact a span{color:var(--gold)}
-.ty-note{font-size:11px;color:var(--dim2);margin-top:22px;line-height:1.6}
+.ty-h{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:52px;line-height:1;color:#fff;margin-bottom:14px;letter-spacing:0.5px;
+}
+.ty-p{font-size:14px;color:rgba(255,255,255,0.5);line-height:1.8;margin-bottom:30px;max-width:280px;margin-left:auto;margin-right:auto}
+.ty-box{
+  background:#1a1a1a;border:1px solid rgba(201,168,76,0.3);
+  border-radius:14px;padding:20px;width:100%;max-width:320px;
+}
+.ty-box-label{font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:#C9A84C;margin-bottom:12px}
+.ty-box a{display:block;font-size:14px;color:rgba(255,255,255,0.6);text-decoration:none;padding:4px 0}
+.ty-box a span{color:#C9A84C}
+.ty-note{font-size:11px;color:rgba(255,255,255,0.2);margin-top:22px;line-height:1.6}
 </style>
 </head>
 <body>
@@ -222,119 +241,99 @@ html,body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--white)
 <div class="screen active" id="s1">
 
   <div class="hero">
-    <div class="overline">Buildwise Accounting</div>
-    <div class="hero-title">Your Construction<br>Company's <em>Accounts</em><br><em>Department</em></div>
-    <div class="hero-role">For contractors &amp; subbies in construction</div>
-    <div class="hero-statement">
-      <p>We use our <strong>dedicated systems, app and workflows</strong> to support your day-to-day accounts — so invoices, expenses and submissions are managed in an organised way, <strong>leaving you free to focus on the job.</strong></p>
-    </div>
+    <div class="hero-label">Buildwise Accounting</div>
+    <div class="hero-headline">YOUR<br><span class="gold">ACCOUNTS</span><br>DEPARTMENT.</div>
   </div>
 
-  <div class="section">
-    <div class="section-header">
-      <div class="section-title">What we take care of</div>
-      <div class="section-desc">Your dedicated accounts department — supporting the key functions your construction business needs.</div>
+  <div class="card">
+    <div class="hero-sub">
+      We use our <strong>dedicated systems, app and workflows</strong> to support your day-to-day accounts — so invoices, expenses and submissions are managed in an organised way, <strong>leaving you free to focus on the job.</strong>
     </div>
+
+    <div class="svc-label">What we take care of</div>
 
     <div class="svc-list">
 
       <div class="svc-item">
-        <div class="svc-icon-wrap">
-          <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
-        </div>
+        <div class="svc-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
         <div class="svc-body">
           <div class="svc-name">Sales Invoices</div>
-          <div class="svc-detail">We help raise invoices with <strong>CIS deductions, retention and VAT domestic reverse charge</strong> considered — so your billing reflects the right treatment for your work.</div>
+          <div class="svc-desc">We help raise invoices with <strong>CIS deductions, retention and VAT domestic reverse charge</strong> considered — so your billing reflects the right treatment for your work.</div>
         </div>
       </div>
 
       <div class="svc-item">
-        <div class="svc-icon-wrap">
-          <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
-        </div>
+        <div class="svc-icon"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></div>
         <div class="svc-body">
           <div class="svc-name">Purchase Invoices &amp; Expenses</div>
-          <div class="svc-detail">Costs coming into your business — materials, equipment, site costs — are <strong>logged and tracked</strong> based on what you provide, with payment due dates noted and records kept in order.</div>
+          <div class="svc-desc">Costs coming into your business — materials, equipment, site costs — are <strong>logged and tracked</strong> based on what you provide, with payment due dates noted and records kept in order.</div>
         </div>
       </div>
 
       <div class="svc-item">
-        <div class="svc-icon-wrap">
-          <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-        </div>
+        <div class="svc-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
         <div class="svc-body">
           <div class="svc-name">Labour &amp; Payments</div>
-          <div class="svc-detail">We support the labour payment process — <strong>verifying workers with HMRC</strong>, applying the appropriate CIS deduction rate, processing payments and issuing <strong>monthly CIS payslips.</strong></div>
+          <div class="svc-desc">We support the labour payment process — <strong>verifying workers with HMRC</strong>, applying the appropriate CIS deduction rate, processing payments and issuing <strong>monthly CIS payslips.</strong></div>
         </div>
       </div>
 
       <div class="svc-item">
-        <div class="svc-icon-wrap">
-          <svg viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
-        </div>
+        <div class="svc-icon"><svg viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div>
         <div class="svc-body">
           <div class="svc-name">CIS Returns</div>
-          <div class="svc-detail">Monthly CIS returns submitted to HMRC — covering workers paid, deductions made and statements issued. Whether you're a contractor, subcontractor or <strong>both, we handle the filing.</strong></div>
+          <div class="svc-desc">Monthly CIS returns submitted to HMRC — covering workers paid, deductions made and statements issued. Whether you're a contractor, subcontractor or <strong>both, we handle the filing.</strong></div>
         </div>
       </div>
 
       <div class="svc-item">
-        <div class="svc-icon-wrap">
-          <svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/><path d="M9 6h6M9 10h6"/></svg>
-        </div>
+        <div class="svc-icon"><svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/><path d="M9 6h6M9 10h6"/></svg></div>
         <div class="svc-body">
           <div class="svc-name">MTD Submissions</div>
-          <div class="svc-detail">Making Tax Digital requires <strong>quarterly digital submissions</strong> to HMRC from April 2026. We prepare and submit returns on time, keeping your records in a compliant digital format throughout the year.</div>
+          <div class="svc-desc">Making Tax Digital requires <strong>quarterly digital submissions</strong> to HMRC from April 2026. We prepare and submit returns on time, keeping your records in a compliant digital format.</div>
         </div>
       </div>
 
       <div class="svc-item">
-        <div class="svc-icon-wrap">
-          <svg viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
-        </div>
+        <div class="svc-icon"><svg viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></div>
         <div class="svc-body">
           <div class="svc-name">Self Assessment</div>
-          <div class="svc-detail">Your annual tax return is <strong>prepared based on the information provided</strong>, with allowances considered and the return submitted ahead of the deadline.</div>
+          <div class="svc-desc">Your annual tax return is <strong>prepared based on the information provided</strong>, with allowances considered and the return submitted ahead of the deadline.</div>
         </div>
       </div>
 
       <div class="svc-item">
-        <div class="svc-icon-wrap">
-          <svg viewBox="0 0 24 24"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
-        </div>
+        <div class="svc-icon"><svg viewBox="0 0 24 24"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg></div>
         <div class="svc-body">
           <div class="svc-name">VAT Returns</div>
-          <div class="svc-detail">VAT returns filed on time with <strong>domestic reverse charge</strong> rules for construction applied. Where applicable, <strong>VAT on business expenses is also considered</strong> as part of the return.</div>
+          <div class="svc-desc">VAT returns filed on time with <strong>domestic reverse charge</strong> rules for construction applied. Where applicable, <strong>VAT on business expenses is also considered</strong> as part of the return.</div>
         </div>
       </div>
 
       <div class="svc-item">
-        <div class="svc-icon-wrap">
-          <svg viewBox="0 0 24 24"><path d="M8 18h8M6 12h9"/><path d="M9 12V7a3 3 0 1 1 6 0"/><path d="M9 15v-3"/></svg>
-        </div>
+        <div class="svc-icon"><svg viewBox="0 0 24 24"><path d="M8 18h8M6 12h9"/><path d="M9 12V7a3 3 0 1 1 6 0"/><path d="M9 15v-3"/></svg></div>
         <div class="svc-body">
           <div class="svc-name">CIS Suffered &amp; Refunds</div>
-          <div class="svc-detail">CIS deductions from your payments are tracked throughout the year. Where a refund position arises, <strong>we work to reclaim what you're due</strong> from HMRC on your behalf.</div>
+          <div class="svc-desc">CIS deductions from your payments are tracked throughout the year. Where a refund position arises, <strong>we work to reclaim what you're due</strong> from HMRC on your behalf.</div>
         </div>
       </div>
 
     </div>
-  </div>
 
-  <div class="cta-section">
-    <div class="cta-block">
-      <div class="cta-kicker">Free Consultation</div>
-      <div class="cta-heading">Let's talk about your accounts</div>
-      <div class="cta-body">Leave your details and we'll be in touch for a free, no-pressure conversation about what your business needs.</div>
-      <button class="btn-gold" onclick="show('s2')">Get in Touch →</button>
-    </div>
-    <div class="or-divider"><span>or</span></div>
-    <a href="mailto:info@buildwiseaccounting.co.uk" class="contact-email">
-      <div class="email-icon">
-        <svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 7 10-7"/></svg>
+    <div class="cta-wrap" style="padding:28px 0 0;background:transparent">
+      <div class="cta-card">
+        <div class="cta-eyebrow">Free Consultation</div>
+        <div class="cta-headline">LESS ADMIN. MORE BUILDING.</div>
+        <div class="cta-body">Leave your details and we'll be in touch for a free, no-pressure conversation about what your business needs.</div>
+        <button class="cta-btn" onclick="show('s2')">GET IN TOUCH →</button>
       </div>
-      info@buildwiseaccounting.co.uk
-    </a>
+      <div class="or-row"><span>or</span></div>
+      <a href="mailto:info@buildwiseaccounting.co.uk" class="email-link">
+        <svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 7 10-7"/></svg>
+        info@buildwiseaccounting.co.uk
+      </a>
+    </div>
+
   </div>
 
 </div>
@@ -343,13 +342,13 @@ html,body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--white)
 <!-- ═══ SCREEN 2 — FORM ═══ -->
 <div class="screen" id="s2">
   <div class="form-top">
-    <button class="back" onclick="show('s1')">
+    <button class="back-btn" onclick="show('s1')">
       <svg viewBox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
       Back
     </button>
-    <div class="form-label">Free Consultation</div>
-    <div class="form-heading">Tell us a bit about yourself</div>
-    <div class="form-sub">We'll be in touch for a free, no-pressure conversation — no commitment, just a chance to see how we can help.</div>
+    <div class="form-ey">Free Consultation</div>
+    <div class="form-h">TELL US ABOUT YOUR BUSINESS</div>
+    <div class="form-p">We'll be in touch for a free, no-pressure conversation — no commitment, just a chance to see how we can help.</div>
   </div>
   <div class="form-body">
     <div class="f" id="f-name">
@@ -393,7 +392,7 @@ html,body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--white)
       <input type="checkbox" id="gdpr">
       <label for="gdpr">I'm happy for Buildwise Accounting to contact me about their services. Your details are never shared with third parties.</label>
     </div>
-    <button class="btn-gold" id="sub-btn" onclick="doSubmit()">Send My Details →</button>
+    <button class="submit-btn" id="sub-btn" onclick="doSubmit()">SEND MY DETAILS →</button>
     <div class="priv">🔒 Your details are kept private and never shared</div>
   </div>
 </div>
@@ -404,10 +403,10 @@ html,body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--white)
   <div class="tick">
     <svg viewBox="0 0 34 34"><path d="M6 17l7 8 15-16"/></svg>
   </div>
-  <div class="ty-h">Thanks, <span id="first-name">there</span>!</div>
+  <div class="ty-h">THANKS, <span id="first-name">THERE</span>!</div>
   <p class="ty-p">We'll be in touch shortly for a free, no-pressure conversation about getting your accounts sorted.</p>
-  <div class="ty-contact">
-    <div class="ty-contact-label">Reach us directly</div>
+  <div class="ty-box">
+    <div class="ty-box-label">Reach us directly</div>
     <a href="mailto:info@buildwiseaccounting.co.uk">📧 <span>info@buildwiseaccounting.co.uk</span></a>
   </div>
   <div class="ty-note">Buildwise Accounting<br>Built for builders, contractors and subbies</div>
@@ -429,11 +428,12 @@ function doSubmit(){
   e('f-name',!name);e('f-phone',!phone);e('f-email',!email||!email.includes('@'));e('f-type',!type);e('f-time',!time);
   if(!gdpr){alert('Please tick the consent box to continue.');return}
   if(!ok)return;
-  document.getElementById('first-name').textContent=name.split(' ')[0];
-  const btn=document.getElementById('sub-btn');btn.disabled=true;btn.textContent='Sending…';
+  document.getElementById('first-name').textContent=name.split(' ')[0].toUpperCase();
+  const btn=document.getElementById('sub-btn');btn.disabled=true;btn.textContent='SENDING…';
   const d=new FormData();
   d.append('Name',name);d.append('Phone',phone);d.append('Email',email);
-  d.append('Type',type);d.append('PreferredTime',time);d.append('Source','Networking Event — WhatsApp Ad');
+  d.append('Type',type);d.append('PreferredTime',time);
+  d.append('Source','Networking Event — WhatsApp Ad');
   fetch(SHEET,{method:'POST',body:d}).catch(()=>{}).finally(()=>show('s3'));
 }
 </script>
